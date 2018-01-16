@@ -56,7 +56,8 @@ class DB{
 			print '<p>query: '. $query .'<br />error:'. mysqli_error($this->resource) .'</p>';
 		}
 	
-		if (!mysqli_errno($this->resource)) {
+		//if (!mysqli_errno($this->resource)) {
+		if ( $result ) {
 			return $result;
 		}
 		else {
