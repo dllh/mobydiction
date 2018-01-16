@@ -21,6 +21,7 @@ class DB{
 
 	function connect(){
 		$this->resource = new mysqli($this->server, $this->un, $this->pw, $this->db );
+error_log( 'DB: ' . var_export( $this->resource, true ) );
 	}
 
 	function disconnect(){
@@ -45,23 +46,24 @@ class DB{
 			print $query . "<br />\n";
 		}
 		$this->result = $this->_query($query);
+error_log( 'RESULT: ' . var_export( $this->result, true ) );
 		return $this->result;
 	}
 
 	function _query($query, $debug = 0) {
 
 		$result = mysqli_query($this->resource, $query );
-print '<pre>' . print_r( $result, true ) . '</pre>';
+error_log( 'RESULT 2: ' . var_export( $result, true ) );
 	
 		if ($debug) {
 			print '<p>query: '. $query .'<br />error:'. mysqli_error($this->resource) .'</p>';
 		}
 	
-		//if (!mysqli_errno($this->resource)) {
 		if ( $result ) {
 			return $result;
 		}
 		else {
+			error_log( 'NO RESULT' );
 			return FALSE;
 		}
 	}
