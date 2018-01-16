@@ -1,21 +1,5 @@
 <?php
 
-/*
-$db = new DB('localhost', 'mobydick', 'th@rSh3Blow5', 'mobydick');
-$db->connect();
-
-print "Getting data from file...\n";
-$data = file_get_contents('data');
-print "Got data; now slurping in...\n";
-$lines = split("\n", $data);
-
-foreach($lines as $line){
-	list($chapter, $word) = split("\t", $line);
-	$db->query('INSERT INTO frequency VALUES(NULL, "%s", %d, 1) ON DUPLICATE KEY UPDATE number = number + 1', $word, intval($chapter));
-}
-print "Done.\n";
-*/
-
 class DB{
 	var $resource;
 	var $server;
@@ -69,14 +53,13 @@ class DB{
 		$result = mysqli_query($this->resource, $query );
 	
 		if ($debug) {
-			print '<p>query: '. $query .'<br />error:'. mysqli_error($active_db) .'</p>';
+			print '<p>query: '. $query .'<br />error:'. mysqli_error($this->resource) .'</p>';
 		}
 	
 		if (!mysqli_errno($this->resource)) {
 			return $result;
 		}
 		else {
-			//trigger_error(mysql_error($this->resource) ."\nquery: ". $query, E_USER_WARNING);
 			return FALSE;
 		}
 	}
@@ -106,7 +89,4 @@ function _db_query_callback($match, $init = FALSE) {
 function db_escape_string($str){
 	return addslashes($str);
 }
-
-
-?>
 
