@@ -20,7 +20,7 @@ class DB{
 	}
 
 	function connect(){
-		$this->resource = new mysqli($this->server, $this->un, $this->pw, $this->db );
+		$this->resource = mysqli_connect($this->server, $this->un, $this->pw, $this->db );
 error_log( 'DB: ' . var_export( $this->resource, true ) );
 	}
 
