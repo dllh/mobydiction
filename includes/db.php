@@ -45,6 +45,7 @@ class DB{
 			print $query . "<br />\n";
 		}
 		$this->result = $this->_query($query);
+print '<pre>' . print_r( $this->result, true ) . '</pre>';
 		return $this->result;
 	}
 
