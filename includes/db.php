@@ -45,13 +45,13 @@ class DB{
 			print $query . "<br />\n";
 		}
 		$this->result = $this->_query($query);
-print '<pre>' . print_r( $this->result, true ) . '</pre>';
 		return $this->result;
 	}
 
 	function _query($query, $debug = 0) {
 
 		$result = mysqli_query($this->resource, $query );
+print '<pre>' . print_r( $result, true ) . '</pre>';
 	
 		if ($debug) {
 			print '<p>query: '. $query .'<br />error:'. mysqli_error($this->resource) .'</p>';
