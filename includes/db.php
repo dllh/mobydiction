@@ -50,6 +50,7 @@ error_log( 'DB: ' . var_export( $this->resource, true ) );
 			print $query . "<br />\n";
 		}
 		$this->result = $this->_query($query);
+error_log( 'QUERY: ' . $query );
 error_log( 'RESULT: ' . var_export( $this->result, true ) );
 		return $this->result;
 	}
@@ -65,8 +66,7 @@ error_log( 'RESULT 2: ' . var_export( $result, true ) );
 	
 		if ( $result ) {
 			return $result;
-		}
-		else {
+		} else {
 			error_log( 'NO RESULT' );
 			return FALSE;
 		}
