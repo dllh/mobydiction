@@ -36,17 +36,16 @@ class DB{
 	}
 
 	function connect(){
-		$this->resource=mysql_connect($this->server, $this->un, $this->pw) or die("Could not connect to database.");
-		mysql_select_db($this->db);
+		$this->resource = new mysqli($this->server, $this->un, $this->pw, $this->db );
 	}
 
 	function disconnect(){
-		mysql_close($this->resource);
+		mysqli_close($this->resource);
 	}
 
 	function fetch_object(){
 		if($this->result){
-			return mysql_fetch_object($this->result);
+			return mysqli_fetch_object($this->result);
 		}
 	}
 
@@ -67,13 +66,13 @@ class DB{
 
 	function _query($query, $debug = 0) {
 
-		$result = mysql_query($query, $this->resource);
+		$result = mysqli_query($this->resource, $query );
 	
 		if ($debug) {
-			print '<p>query: '. $query .'<br />error:'. mysql_error($active_db) .'</p>';
+			print '<p>query: '. $query .'<br />error:'. mysqli_error($active_db) .'</p>';
 		}
 	
-		if (!mysql_errno($this->resource)) {
+		if (!mysqli_errno($this->resource)) {
 			return $result;
 		}
 		else {
