@@ -13,7 +13,6 @@ class DB{
 		$this->un = $un;
 		$this->pw = $pw;
 		$this->database = $database;
-error_log( 'DB: ' . var_export( $this, true ) );
 	}
 
 	function debug($val = true){
@@ -29,14 +28,6 @@ error_log( 'DB: ' . var_export( $this, true ) );
 		if ( ! mysqli_select_db( $this->resource, $this->database ) ) {
 			die( 'Could not select database ' . $this->database . '.' );
 		}
-error_log( 'DB Client Info: ' . var_export( $this->resource->client_info, true ) );
-error_log( 'DB Client Version: ' . var_export( $this->resource->client_version, true ) );
-error_log( 'DB Host Info: ' . var_export( $this->resource->host_info, true ) );
-error_log( 'DB Server Info: ' . var_export( $this->resource->server_info, true ) );
-error_log( 'DB Error Number: ' . var_export( $this->resource->connect_error, true ) );
-error_log( 'DB Error: ' . var_export( $this->resource->error, true ) );
-error_log( 'DB Stat: ' . var_export( $this->resource->sqlstate, true ) );
-error_log( 'DB SQL State: ' . var_export( $this->resource->sqlstate, true ) );
 	}
 
 	function disconnect(){
@@ -67,11 +58,6 @@ error_log( 'DB SQL State: ' . var_export( $this->resource->sqlstate, true ) );
 	function _query($query, $debug = 0) {
 
 		$result = mysqli_query($this->resource, $query );
-foreach ( $this->resource as $k => $v ) {
-	error_log( 'RESOURCE: ' . $k . ': ' . var_export( $this->resource->{ $k }, true ) );
-}
-error_log( 'QUERY: ' . $query );
-error_log( 'RESULT: ' . var_export( $result, true ) );
 		if ($debug) {
 			print '<p>query: '. $query .'<br />error:'. mysqli_error($this->resource) .'</p>';
 		}
@@ -79,7 +65,6 @@ error_log( 'RESULT: ' . var_export( $result, true ) );
 		if ( $result ) {
 			return $result;
 		} else {
-			error_log( 'NO RESULT' );
 			return FALSE;
 		}
 	}
