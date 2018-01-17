@@ -65,7 +65,6 @@ error_log( 'DB SQL State: ' . var_export( $this->resource->sqlstate, true ) );
 		$result = mysqli_query($this->resource, $query, MYSQLI_USE_RESULT );
 error_log( 'QUERY: ' . $query );
 error_log( 'RESULT: ' . var_export( $result, true ) );
-	
 		if ($debug) {
 			print '<p>query: '. $query .'<br />error:'. mysqli_error($this->resource) .'</p>';
 		}
