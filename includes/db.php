@@ -31,6 +31,8 @@ error_log( 'DB Host Info: ' . var_export( $this->resource->host_info, true ) );
 error_log( 'DB Server Info: ' . var_export( $this->resource->server_info, true ) );
 error_log( 'DB Error Number: ' . var_export( $this->resource->connect_error, true ) );
 error_log( 'DB Error: ' . var_export( $this->resource->error, true ) );
+error_log( 'DB Stat: ' . var_export( $this->resource->sqlstate, true ) );
+error_log( 'DB SQL State: ' . var_export( $this->resource->sqlstate, true ) );
 	}
 
 	function disconnect(){
