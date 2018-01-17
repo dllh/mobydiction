@@ -20,8 +20,8 @@ class DB{
 	}
 
 	function connect(){
-		$this->resource = mysqli_connect($this->server, $this->un, $this->pw, $this->db );
-		if (mysqli_connect_errno()) {
+		$this->resource = @mysqli_connect($this->server, $this->un, $this->pw, $this->db );
+		if ( ! $this->resource ) {
 			printf("Connect failed: %s\n", mysqli_connect_error());
 			exit();
 		}
