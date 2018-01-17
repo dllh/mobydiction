@@ -5,14 +5,14 @@ class DB{
 	var $server;
 	var $un;
 	var $pw;
-	var $db;
+	var $database;
 	var $debug = false;
 	
-	function __construct($server, $un, $pw, $db){
+	function __construct($server, $un, $pw, $database){
 		$this->server = $server;
 		$this->un = $un;
 		$this->pw = $pw;
-		$this->db = $db;
+		$this->database = $database;
 error_log( 'DB: ' . var_export( $this, true ) );
 	}
 
@@ -21,13 +21,13 @@ error_log( 'DB: ' . var_export( $this, true ) );
 	}
 
 	function connect(){
-		$this->resource = @mysqli_connect($this->server, $this->un, $this->pw, $this->db );
+		$this->resource = @mysqli_connect($this->server, $this->un, $this->pw, $this->database );
 		if ( ! $this->resource ) {
 			printf("Connect failed: %s\n", mysqli_connect_error());
 			exit();
 		}
-		if ( ! mysqli_select_db( $this->resource, $this->db ) ) {
-			die( 'Could not select database ' . $this->db . '.' );
+		if ( ! mysqli_select_db( $this->resource, $this->database ) ) {
+			die( 'Could not select database ' . $this->database . '.' );
 		}
 error_log( 'DB Client Info: ' . var_export( $this->resource->client_info, true ) );
 error_log( 'DB Client Version: ' . var_export( $this->resource->client_version, true ) );
