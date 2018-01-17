@@ -57,15 +57,14 @@ error_log( 'DB SQL State: ' . var_export( $this->resource->sqlstate, true ) );
 			print $query . "<br />\n";
 		}
 		$this->result = $this->_query($query);
-error_log( 'QUERY: ' . $query );
-error_log( 'RESULT: ' . var_export( $this->result, true ) );
 		return $this->result;
 	}
 
 	function _query($query, $debug = 0) {
 
-		$result = mysqli_query($this->resource, $query );
-error_log( 'RESULT 2: ' . var_export( $result, true ) );
+		$result = mysqli_query($this->resource, $query, MYSQLI_USE_RESULT );
+error_log( 'QUERY: ' . $query );
+error_log( 'RESULT: ' . var_export( $result, true ) );
 	
 		if ($debug) {
 			print '<p>query: '. $query .'<br />error:'. mysqli_error($this->resource) .'</p>';
