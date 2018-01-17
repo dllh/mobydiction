@@ -25,9 +25,12 @@ class DB{
 			printf("Connect failed: %s\n", mysqli_connect_error());
 			exit();
 		}
-error_log( 'DB: ' . var_export( $this->resource, true ) );
-var_dump($this->resource->client_info);
-var_dump($this->resource->client_version);
+error_log( 'DB Client Info: ' . var_export( $this->resource->client_info, true ) );
+error_log( 'DB Client Version: ' . var_export( $this->resource->client_version, true ) );
+error_log( 'DB Host Info: ' . var_export( $this->resource->host_info, true ) );
+error_log( 'DB Server Info: ' . var_export( $this->resource->server_info, true ) );
+error_log( 'DB Error Number: ' . var_export( $this->resource->connect_error, true ) );
+error_log( 'DB Error: ' . var_export( $this->resource->error, true ) );
 	}
 
 	function disconnect(){
