@@ -8,7 +8,7 @@ class DB{
 	var $db;
 	var $debug = false;
 	
-	function DB($server, $un, $pw, $db){
+	function __construct($server, $un, $pw, $db){
 		$this->server = $server;
 		$this->un = $un;
 		$this->pw = $pw;
