@@ -64,7 +64,7 @@ error_log( 'DB SQL State: ' . var_export( $this->resource->sqlstate, true ) );
 
 		$result = mysqli_query($this->resource, $query );
 foreach ( $this->resource as $k => $v ) {
-	error_log( 'RESOURCE: ' . $k . ': ' . $v );
+	error_log( 'RESOURCE: ' . $k . ': ' . var_export( $v, true ) );
 }
 error_log( 'QUERY: ' . $query );
 error_log( 'RESULT: ' . var_export( $result, true ) );
