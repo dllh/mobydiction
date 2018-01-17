@@ -13,6 +13,7 @@ class DB{
 		$this->un = $un;
 		$this->pw = $pw;
 		$this->db = $db;
+error_log( 'DB: ' . var_export( $this, true ) );
 	}
 
 	function debug($val = true){
