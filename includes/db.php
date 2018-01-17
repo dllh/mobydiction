@@ -26,6 +26,8 @@ class DB{
 			exit();
 		}
 error_log( 'DB: ' . var_export( $this->resource, true ) );
+var_dump($this->resource->client_info);
+var_dump($this->resource->client_version);
 	}
 
 	function disconnect(){
